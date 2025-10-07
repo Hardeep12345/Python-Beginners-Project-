@@ -1,32 +1,15 @@
-class Stack:
-    def __init__(self):
-        self.items = []
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        # Last i elements are already sorted
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                # Swap if the element found is greater than the next element
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
 
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def push(self, item):
-        self.items.append(item)
-
-    def pop(self):
-        if self.is_empty():
-            raise IndexError("pop from empty stack")
-        return self.items.pop()
-
-    def peek(self):
-        if self.is_empty():
-            raise IndexError("peek from empty stack")
-        return self.items[-1]
-
-    def size(self):
-        return len(self.items)
-
-# Example usage:
+# Example usage
 if __name__ == "__main__":
-    stack = Stack()
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    print(stack.pop())  # Output: 3
-    print(stack.peek()) # Output: 2
-    print(stack.size()) # Output: 2
+    data = [64, 34, 25, 12, 22, 11, 90]
+    print("Unsorted array:", data)
+    bubble_sort(data)
+    print("Sorted array:", data)
